@@ -6,17 +6,18 @@ WITH
       MIN(DATE(trip_start_timestamp)) AS min_date,
       MAX(DATE(trip_start_timestamp)) AS max_date
     FROM
-      'turing-reach-379401`.`playground_iykra`.`taxi_trips') 
+       `turing-reach-379401.playground_iykra.taxi_trips`
+       ) 
   ,
   date_list AS (
     SELECT
       DATE_ADD(min_date, INTERVAL day_offset DAY) AS date
     FROM
       date_range,
-      UNNEST(GENERATE_ARRAY(0, DATEDIFF(max_date, min_date))) AS day_offset
+      UNNEST(GENERATE_ARRAY(0, DATE_DIFF(max_date, min_date, DAY))) AS day_offset
   )
 SELECT
-  DATE_FORMAT(date, '%Y%m%d') AS date_id,
+  FORMAT_DATE('%Y%m%d', date) AS date_id,
   date,
   EXTRACT(YEAR FROM date) AS year,
   EXTRACT(MONTH FROM date) AS month,

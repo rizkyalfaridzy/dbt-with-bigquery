@@ -1,4 +1,3 @@
-
 {{ config(materialized='table') }}
 
 WITH
@@ -7,8 +6,8 @@ WITH
       MIN(DATE(trip_start_timestamp)) AS min_date,
       MAX(DATE(trip_start_timestamp)) AS max_date
     FROM
-      {{ ref('turing-reach-379401`.`playground_iykra`.`taxi_trips') }}
-  ),
+      'turing-reach-379401`.`playground_iykra`.`taxi_trips') 
+  ,
   date_list AS (
     SELECT
       DATE_ADD(min_date, INTERVAL day_offset DAY) AS date

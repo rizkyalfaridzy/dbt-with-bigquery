@@ -1,5 +1,5 @@
 
-{{{{ config(materialized='table') }}
+  {{{{ config(materialized='table') }}
 
 SELECT
   unique_key,
@@ -12,7 +12,7 @@ SELECT
   companies.company_id,
   dates.date_id
 FROM
-  {{ ref('turing-reach-379401`.`playground_iykra`.`taxi_trips') }} trips
+  'turing-reach-379401`.`playground_iykra`.`taxi_trips'
 JOIN
   {{ ref('company_dim') }} companies
 ON
@@ -21,3 +21,4 @@ JOIN
   {{ ref('date_dim') }} dates
 ON
   DATE(trips.trip_start_timestamp) = dates.date}}
+

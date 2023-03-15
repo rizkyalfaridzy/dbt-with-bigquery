@@ -1,21 +1,26 @@
-
 version: 2
 
 models:
-  - name: my_first_dbt_model
+  - name: trip_distance_avg
     description: "A starter dbt model"
     columns:
-      - name: id
+      - name: trip_month
         description: "The primary key for this table"
         tests:
           - unique
-          - not_null
 
-  - name: my_second_dbt_model
+  - name: trip_distance_avg
     description: "A starter dbt model"
     columns:
-      - name: id
+      - name: trip_year
         description: "The primary key for this table"
         tests:
           - unique
-          - not_null
+
+  - name: trip_distance_avg
+    description: "A starter dbt model"
+    columns:
+      - name: avg_trip_distance
+        description: "The primary key for this table"
+        tests:
+          - unique
